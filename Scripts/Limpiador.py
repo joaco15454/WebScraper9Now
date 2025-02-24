@@ -1,7 +1,10 @@
 import pandas as pd  
 import time  
+import os
 
-def limpiar_csv(archivo_entrada, archivo_salida):  
+def limpiar_csv(archivo_entrada, archivo_salida):
+    archivo_entrada = os.path.join(".", "Files", archivo_entrada)
+    archivo_salida = os.path.join(".", "Files", archivo_salida)
     start_time = time.time()  # Iniciar el temporizador  
 
     # Intentar cargar el CSV y manejar errores  

@@ -1,15 +1,16 @@
-import csv  
+import csv
+import os
 from time import sleep, time
 from selenium import webdriver  
 from selenium.webdriver.chrome.options import Options  
 from selenium.webdriver.common.by import By  
 from selenium.webdriver.support.ui import WebDriverWait  
 from selenium.webdriver.support import expected_conditions as EC  
-from selenium.webdriver.common.action_chains import ActionChains  
+from selenium.webdriver.common.action_chains import ActionChains
 
 BASE_URL = "https://www.9now.com.au"  
 LIVE_CHANNEL_PATH = "/?selectedTab=Live+24%2F7"  
-OUTPUT_FILE = "live_channels.csv"  
+OUTPUT_FILE = os.path.join(".", "Files", "live_channels.csv") 
 
 def configure_driver():  
     options = Options()  
@@ -104,7 +105,7 @@ def save_data_to_csv(data, execution_time):
         writer.writerows(data)  
         writer.writerow({"link": "Tiempo de ejecución de scrapeo:", "rango_horario": execution_time, "titulo": "", "descripcion": ""})  
 
-def main():  
+def main():      
     start_time = time()
     driver = configure_driver()  
     sleep(3)  

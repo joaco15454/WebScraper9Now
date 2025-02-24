@@ -1,4 +1,5 @@
-import time  
+import time
+import os
 import csv  
 from selenium import webdriver  
 from selenium.webdriver.common.by import By  
@@ -106,8 +107,9 @@ def scrape_day(driver, day_button, all_data):
     except Exception as e:  
         print(f"Error scraping day {data_date}: {e}")  
 
-def save_to_csv(data, output_file, execution_time):  
-    with open(output_file, "w", newline="", encoding="utf-8") as f:  
+def save_to_csv(data, output_file, execution_time):
+    OUTPUT_FILE = os.path.join(".", "Files", output_file)  
+    with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:  
         writer = csv.writer(f)  
         writer.writerow(["Fecha", "Canal", "Titulo", "Nombre Capitulo", "Descripcion", "Info adicional", "Horario"])  
         writer.writerows(data)  
